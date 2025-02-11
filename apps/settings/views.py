@@ -23,7 +23,7 @@ class ProductMixins(GenericViewSet,
     permission_classes = IsAuthenticated
     
     search_fields = ['title', 'description']
-    ordering_fields = ['price', 'created_at']
+    ordering_fields = ['price', 'created_at'] 
     ordering = ['-created_at'] 
     
     def create(self, request, *args, **kwargs):
@@ -37,6 +37,9 @@ class ProductMixins(GenericViewSet,
     
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
+    
+    def get(self, request):
+        return Response({"message":"Ты авторизован"})
     
 
     
